@@ -1,20 +1,48 @@
-async function pegarCoisa(){
-    const resposta = await fetch("https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=pt-BR")
+async function pegarCoisa() {
+    const resposta = await fetch("https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=pt-BR");
     const aguaComGas = await resposta.json();
+    let personagensContainer = document.getElementsByClassName('personagens')[0];  // Select container for agents
+
     console.log(aguaComGas);
 
-    for(let i = 0; i < aguaComGas.data.length; i++){
-        console.log(aguaComGas.data[i].displayName)
-        console.log(aguaComGas.data[i].abilities)
+    // Loop through the agents data
+    for (let i = 0; i < aguaComGas.data.length; i++) {
+        const agent = aguaComGas.data[i];
+        console.log(agent.displayName);
+        console.log(agent.abilities);
+
+        // Create HTML content for this agent
+        let agentHTML = `
+            <div class="personagem">
+                <div id="cadaum">
+                    <img id='perso' src="${agent.displayIcon}" alt="${agent.displayName}">
+                    <h3>${agent.displayName}</h3>
+                </div>
+                    <div class="habilidades">
+        `;
+
+        // Loop through abilities for this agent and add them under the agent
+        for (let j = 0; j < agent.abilities.length; j++) {
+            agentHTML += `
+                <p><strong>Habilidade ${j + 1}: </strong>${agent.abilities[j].displayName}</p>
+                <p>${agent.abilities[j].description}</p>
+            `;
+        }
+
+        // Close the agent div and add it to the container
+        agentHTML += `</div></div>`;
+        personagensContainer.innerHTML += agentHTML;
     }
-} 
+}
+
+
 
 pegarCoisa();
 
 window.addEventListener('scroll', function() {
     var texto = document.getElementById('textoValorant');
     
-    if (window.scrollY > 100) {
+    if (window.scrollY > 1500) {
         texto.classList.add('fade-out');
     }else {
         texto.classList.remove('fade-out');
@@ -32,48 +60,33 @@ window.addEventListener('scroll', function(){
 })
 
 window.addEventListener('scroll', function(){
-    var hrFoda1 = document.getElementById('hrum')
+    var hr = document.getElementsByClassName('hrum')[0]
 
-    if(window.scrollY > 100){
-        hrFoda1.classList.add('agaerre-nada')
+    if(window.scrollY >= 0 && window.scrollY <= 1000){
+        hr.classList.remove('hrum-liga')
     }else{
-        hrFoda1.classList.remove('agaerre-nada')
+        hr.classList.add('hrum-liga')
     }
-
 })
 
 window.addEventListener('scroll', function(){
-    var hrFoda2 = document.getElementById('hrdois')
+    var hr = document.getElementsByClassName('hrdois')[0]
 
-    if(window.scrollY > 500){
-        hrFoda2.classList.add('agaerre-nada')
+    if(window.scrollY > 1000 && window.scrollY <= 1900){
+        hr.classList.add('hrdois-liga')
     }else{
-        hrFoda2.classList.remove('agaerre-nada')
+        hr.classList.remove('hrdois-liga')
     }
-
 })
 
 window.addEventListener('scroll', function(){
-    var hrFoda3 = document.getElementById('hrtres')
+    var hr = document.getElementsByClassName('hrtres')[0]
 
-    if(window.scrollY > 500){
-        hrFoda3.classList.add('agaerre-nada')
+    if(window.scrollY > 1900){
+        hr.classList.add('hrtres-liga')
     }else{
-        hrFoda3.classList.remove('agaerre-nada')
+        hr.classList.remove('hrtres-liga')
     }
-
 })
-
-window.addEventListener('scroll', function(){
-    var hrFoda4 = document.getElementById('hrquatro')
-
-    if(window.scrollY > 800){
-        hrFoda4.classList.add('agaerre-nada')
-    }else{
-        hrFoda4.classList.remove('agaerre-nada')
-    }
-
-})
-
 
 
