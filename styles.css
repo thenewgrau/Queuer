@@ -1,9 +1,10 @@
 html{
     scroll-behavior: smooth;
+    width: 1920px;
 }
 
-
 body{
+    width: 1920px;
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -19,6 +20,7 @@ h1{
 h3,p{
     color: white;
 }
+
 
 .agaerre{
     display: flex;
@@ -50,7 +52,7 @@ h3,p{
 }
 
 .containerCima{
-    width: 100vw;
+    width: 1920px;
     height: 100vh;
     font-size: 8px;
     display: flex;
@@ -68,14 +70,15 @@ h3,p{
     height: 1000px;
 }
 
+.back{
+    width: 1920px;
+    height: 1080px;
+}
+
 #vava{
     height: 70px;
 }
 
-#imagemExemplo{
-    width: 1920px;
-    height: 1000px;
-}
 
 #textoValorant{ 
     display: flex;
@@ -83,10 +86,11 @@ h3,p{
     margin: 0;
     padding: 25% 10% 20% 10%;
     color: white;  
+    transition: opacity 0.3s;
 }
 
 .paraTexto{
-    background-color: #363636;
+    background-color: rgb(15, 25, 35);
     width: 1920px;
     height: 1000px;
 }
@@ -103,20 +107,30 @@ h3,p{
 }
 
 .personagens{
-    padding: 10%;
-    background-color: #363636;
+    width: 1920px;
+    background-color: rgb(15, 25, 35);
+    
+}
+
+.personagem{
+    width: 1920px;
 }
 
 .habilidades{
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+
 }
 
-#perso{
-    border: 40px solid;
-    border-image: linear-gradient(315deg, rgb(216, 79, 0) 3%, rgb(139, 10, 224) 38%, rgb(233, 86, 1) 68%, rgb(240, 45, 11) 98%);
+.perso{
+    border: 2px solid;
+    border-color: white;
     border-radius: 50%;
     width: 200px;
     height: 200px;
+    cursor: pointer;
 }
 
 #cadaum{
@@ -124,5 +138,12 @@ h3,p{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10% 0% 10% 0%;
+    gap: 10px;
+}
+
+#displayIcon{
+    width: 100px;
+    height: 100px;
+    padding: 0% 5%  5% 5%;
+    justify-content: center;
 }
