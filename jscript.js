@@ -91,13 +91,13 @@ window.addEventListener('scroll', function () {
             hrum.classList.add('hrum-liga');
         }
 
-        if (scrollPosition > 300 && scrollPosition <= 1000) {
+        if (scrollPosition > 230 && scrollPosition <= 1100) {
             hrdois.classList.add('hrdois-liga');
         } else {
             hrdois.classList.remove('hrdois-liga');
         }
 
-        if (scrollPosition > 1000 && scrollPosition <= 15000) {
+        if (scrollPosition > 1100 && scrollPosition <= 15000) {
             hrtres.classList.add('hrtres-liga');
         } else {
             hrtres.classList.remove('hrtres-liga');
