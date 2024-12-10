@@ -2,11 +2,10 @@ async function pegarCoisa() {
     const resposta = await fetch("https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=pt-BR");
     const aguaComGas = await resposta.json();
     let personagensContainer = document.getElementsByClassName('personagens')[0];
+    let icone = document.getElementById('icon')
 
     for (let i = 0; i < aguaComGas.data.length; i++) {
-        console.log(aguaComGas.data[i].abilities.displayIcon)
         const agent = aguaComGas.data[i];
-    
         let agentHTML = `
             <div class="personagem">
                 <div id="cadaum">
@@ -16,62 +15,34 @@ async function pegarCoisa() {
                 <div class="habilidades habilidades-${agent.displayName}">
         `;
 
+        for (let j = 0; j < agent.abilities.length; j++) {
+            agentHTML += `
+                <div class="descricao">
+                    <h3> ${agent.abilities[j].displayName} </h3>
+                    <img id="ability-icon" href="${agent.displayName}" src="${agent.abilities[j].displayIcon}" alt="Icone habilidade">
+                </div>
+            `;
+        }
+        agentHTML += `</div></div>`;
         personagensContainer.innerHTML += agentHTML;
-    }
+    };
+
     personagensContainer.addEventListener("click", function (event) {
-        // Verifique se o elemento clicado é uma imagem com a classe 'perso'
         if (event.target && event.target.classList.contains('perso')) {
             const agentName = event.target.id;
-            console.log(`Agente clicado: ${agentName}`);
-    
-            let filinhoDePapai = document.getElementsByClassName(`habilidades-${agentName}`)[0];
-            console.log(filinhoDePapai);
-    
-            const agent = aguaComGas.data.find(agent => agent.displayName === agentName);
-            console.log(agent);
+            const abilitiesContainer = document.getElementsByClassName(`habilidades-${agentName}`)[0];
 
-            if (agent) {
-
-                let descriptionHTML = "";
-                for(let i = 0; i < agent.abilities.length;i++){
-                    // console.log(agent.abilities[i])
-                     descriptionHTML += `
-                         <div id='descricao'>
-                             <p>${agent.description}</p>
-                             <img id='icon' src='${agent.abilities[i].displayIcon}' alt='era pra ter algo aqui...'>
-                         </div>
-                     `;
-                }
-                filinhoDePapai.innerHTML += descriptionHTML; 
-    
-                // let descriptionContainer = filinhoDePapai.querySelector('#descricao');
-                // console.log(descriptionContainer);
-
-    
-                // if (descriptionContainer) {
-
-                //     descriptionContainer.remove();
-                // } else {
-                //     for (x = 0; x < agent.abilities.length; x++) {
-                //         const agentIcone = aguaComGas.data.find(agent => agent.displayName === agentName)
-                //     };
-                //     let descriptionHTML = `
-                //         <div id='descricao'>
-                //             <p>${agent.description}</p>
-                //             <img id='icon' src='${agent.abilities[1].displayIcon}' alt='era pra ter algo aqui...'>
-                //         </div>
-                //     `;
-                //     console.log(agent.description);
-                //     filinhoDePapai.innerHTML += descriptionHTML; 
-                // }
+            if (abilitiesContainer.style.display === "flex") {
+                abilitiesContainer.style.display = "none";
+                
             } else {
-                console.log("Agente não encontrado.");
+                abilitiesContainer.style.display = "flex";
             }
         }
     });
-    
-    
 }
+
+
 
 pegarCoisa();
 
@@ -118,11 +89,19 @@ window.addEventListener('scroll', function () {
 window.addEventListener('scroll', function () {
     var hr = document.getElementsByClassName('hrtres')[0]
 
-    if (window.scrollY > 1900) {
+    if (window.scrollY > 1900 && window.scrollY <= 14500) {
         hr.classList.add('hrtres-liga')
     } else {
         hr.classList.remove('hrtres-liga')
     }
 })
 
+window.addEventListener('scroll', function () {
+    var hr = document.getElementsByClassName('hrquatro')[0]
 
+    if (window.scrollY >= 14500) {
+        hr.classList.add('hrquatro-liga')
+    } else {
+        hr.classList.remove('hrquatro-liga')
+    }
+})
