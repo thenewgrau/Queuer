@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,40 +10,46 @@
     <div class="containerCima">
         <img id="vava" src="./Fotos/vavalogo.png" alt="fotoValorant">
         <div class="agaerre">
-            <h1 id="navegar">Home</h1>
+            <a href="#home">
+                <h1 id="navegar">Home</h1>
+            </a>
             <hr class="hrum">
         </div>
         <div class="agaerre">
-            <h1 id="navegar">Valorant</h1>
+            <a href="#valorant">
+                <h1 id="valorantBotao">Valorant</h1>
+            </a>
             <hr class="hrdois">
         </div>
         <div class="agaerre">
-            <h1 id="navegar">Personagens</h1>
+            <a href="#personagens">
+                <h1 id="navegar">Personagens</h1>
+            </a>
             <hr class="hrtres">
         </div>
         <div class="agaerre">
-            <h1 id="navegar">Sobre Mim</h1>
+            <a href="#sobremim">
+                <h1 id="navegar">Sobre Mim</h1>
+            </a>
             <hr class="hrquatro">
         </div>
     </div>
-    <div class="container">
+    <div class="container" id="home">
         <video width="100%" height="auto" autoplay loop muted>
-            <!-- video com direitos autorias todos os créditos do video para https://www.youtube.com/@7Tech_ -->
             <source src="./Fotos/edit.mp4" type="video/mp4">
         </video>
     </div>
-    <div class="paraTexto">
+    <div class="paraTexto" id="valorant">
         <p id="textoValorant">
-            Valorant é um jogo eletrônico de tiro em primeira pessoa (FPS) desenvolvido e publicado pela Riot Games, lançado em junho de 2020. O jogo é um shooter tático que mistura elementos de jogos como Counter-Strike e Overwatch. Nele, duas equipes de cinco jogadores competem em partidas, 
-            sendo uma delas responsável por plantar uma bomba (chamada de "Spike") e a outra por impedir ou desarmá-la.
+            Valorant é um jogo eletrônico de tiro em primeira pessoa (FPS) desenvolvido e publicado pela Riot Games, lançado em junho de 2020. O jogo é um shooter tático que mistura elementos de jogos como Counter-Strike e Overwatch. Nele, duas equipes de cinco jogadores competem em partidas, sendo uma delas responsável por plantar uma bomba (chamada de "Spike") e a outra por impedir ou desarmá-la.
             cada jogador escolhe um agente, um personagem com habilidades únicas, que variam entre ofensivas, defensivas ou de suporte. O jogo é baseado em rodadas e a equipe que ganhar o maior número de rodadas vence a partida. A dinâmica do jogo exige coordenação em equipe, estratégia e habilidade no controle das armas.
             Valorant é conhecido por sua ênfase em jogabilidade estratégica e precisão, além de ter uma grande cena competitiva e esports em ascensão.
         </p>
     </div>
-    <div class="personagens">
+    <div class="personagens" id="personagens">
         <!-- aqui fica a parte dos personagens que está no javascript que eu to puxando da api do valorant -->
     </div>
-    <div class="sobremim">
+    <div class="sobremim" id="sobremim">
         <img id="edu" src="Fotos/serafim.jpeg" alt="Rounded avatar">
         <h1 id="eu">Eduardo Serafim</h1>
         <div id="links">
@@ -61,6 +67,10 @@
             </div>
         </div>
     </div>
+
+
+
+
     <script src="jscript.js"></script>
 </body>
 </html>
