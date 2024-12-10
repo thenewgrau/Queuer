@@ -2,7 +2,6 @@ async function pegarCoisa() {
     const resposta = await fetch("https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=pt-BR");
     const aguaComGas = await resposta.json();
     let personagensContainer = document.getElementsByClassName('personagens')[0];
-    let icone = document.getElementById('icon')
 
     for (let i = 0; i < aguaComGas.data.length; i++) {
         const agent = aguaComGas.data[i];
@@ -51,7 +50,7 @@ window.addEventListener('scroll', function () {
     var scrollPosition = window.scrollY || document.documentElement.scrollTop;
     
     if (window.innerWidth <= 768) {
-        if (scrollPosition > 600 || scrollPosition < 300) {
+        if (scrollPosition > 700 || scrollPosition < 200) {
             texto.classList.add('fade-out');
         } else {
             texto.classList.remove('fade-out');
@@ -82,16 +81,14 @@ window.addEventListener('scroll', function () {
         barraCima.classList.remove('desce-foda');
     }
 
-    // Condições de rolagem para os elementos <hr>
     if (window.innerWidth <= 768) { // Dispositivos móveis
-        // Para dispositivos móveis, os intervalos podem ser mais compactos
-        if (scrollPosition <= 300) {
+        if (scrollPosition <= 200) {
             hrum.classList.remove('hrum-liga');
         } else {
             hrum.classList.add('hrum-liga');
         }
 
-        if (scrollPosition > 230 && scrollPosition <= 1100) {
+        if (scrollPosition > 200 && scrollPosition <= 1100) {
             hrdois.classList.add('hrdois-liga');
         } else {
             hrdois.classList.remove('hrdois-liga');
