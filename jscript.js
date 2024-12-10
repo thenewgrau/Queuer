@@ -48,60 +48,90 @@ pegarCoisa();
 
 window.addEventListener('scroll', function () {
     var texto = document.getElementById('textoValorant');
-
-    if (window.scrollY > 1200 || window.scrollY < 800) {
-        texto.classList.add('fade-out');
+    var scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    
+    if (window.innerWidth <= 768) {
+        if (scrollPosition > 600 || scrollPosition < 300) {
+            texto.classList.add('fade-out');
+        } else {
+            texto.classList.remove('fade-out');
+        }
     } else {
-        texto.classList.remove('fade-out');
+        if (scrollPosition > 1200 || scrollPosition < 800) {
+            texto.classList.add('fade-out');
+        } else {
+            texto.classList.remove('fade-out');
+        }
     }
 });
 
-window.addEventListener('scroll', function () {
-    var barraCima = document.getElementsByClassName('containerCima')[0];
 
-    if (window.scrollY > 100) {
+// Função para lidar com o scroll
+window.addEventListener('scroll', function () {
+    var scrollPosition = window.scrollY || document.documentElement.scrollTop; // Compatibilidade entre navegadores
+    var barraCima = document.getElementsByClassName('containerCima')[0];
+    var hrum = document.getElementsByClassName('hrum')[0];
+    var hrdois = document.getElementsByClassName('hrdois')[0];
+    var hrtres = document.getElementsByClassName('hrtres')[0];
+    var hrquatro = document.getElementsByClassName('hrquatro')[0];
+
+    // Comportamento para 'containerCima'
+    if (scrollPosition > 100) {
         barraCima.classList.add('desce-foda');
     } else {
-        barraCima.classList.remove('desce-foda')
+        barraCima.classList.remove('desce-foda');
     }
-})
 
-window.addEventListener('scroll', function () {
-    var hr = document.getElementsByClassName('hrum')[0]
+    // Condições de rolagem para os elementos <hr>
+    if (window.innerWidth <= 768) { // Dispositivos móveis
+        // Para dispositivos móveis, os intervalos podem ser mais compactos
+        if (scrollPosition <= 300) {
+            hrum.classList.remove('hrum-liga');
+        } else {
+            hrum.classList.add('hrum-liga');
+        }
 
-    if (window.scrollY >= 0 && window.scrollY <= 1000) {
-        hr.classList.remove('hrum-liga')
-    } else {
-        hr.classList.add('hrum-liga')
+        if (scrollPosition > 300 && scrollPosition <= 1000) {
+            hrdois.classList.add('hrdois-liga');
+        } else {
+            hrdois.classList.remove('hrdois-liga');
+        }
+
+        if (scrollPosition > 1000 && scrollPosition <= 15000) {
+            hrtres.classList.add('hrtres-liga');
+        } else {
+            hrtres.classList.remove('hrtres-liga');
+        }
+
+        if (scrollPosition >= 15000) {
+            hrquatro.classList.add('hrquatro-liga');
+        } else {
+            hrquatro.classList.remove('hrquatro-liga');
+        }
+    } else { // Para desktops
+        // Para desktops, podemos manter os intervalos originais
+        if (scrollPosition <= 1000) {
+            hrum.classList.remove('hrum-liga');
+        } else {
+            hrum.classList.add('hrum-liga');
+        }
+
+        if (scrollPosition > 1000 && scrollPosition <= 1900) {
+            hrdois.classList.add('hrdois-liga');
+        } else {
+            hrdois.classList.remove('hrdois-liga');
+        }
+
+        if (scrollPosition > 1900 && scrollPosition <= 14500) {
+            hrtres.classList.add('hrtres-liga');
+        } else {
+            hrtres.classList.remove('hrtres-liga');
+        }
+
+        if (scrollPosition >= 14500) {
+            hrquatro.classList.add('hrquatro-liga');
+        } else {
+            hrquatro.classList.remove('hrquatro-liga');
+        }
     }
-})
-
-window.addEventListener('scroll', function () {
-    var hr = document.getElementsByClassName('hrdois')[0]
-
-    if (window.scrollY > 1000 && window.scrollY <= 1900) {
-        hr.classList.add('hrdois-liga')
-    } else {
-        hr.classList.remove('hrdois-liga')
-    }
-})
-
-window.addEventListener('scroll', function () {
-    var hr = document.getElementsByClassName('hrtres')[0]
-
-    if (window.scrollY > 1900 && window.scrollY <= 14500) {
-        hr.classList.add('hrtres-liga')
-    } else {
-        hr.classList.remove('hrtres-liga')
-    }
-})
-
-window.addEventListener('scroll', function () {
-    var hr = document.getElementsByClassName('hrquatro')[0]
-
-    if (window.scrollY >= 14500) {
-        hr.classList.add('hrquatro-liga')
-    } else {
-        hr.classList.remove('hrquatro-liga')
-    }
-})
+});
